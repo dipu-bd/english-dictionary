@@ -1,4 +1,4 @@
-const dict1 = require("./dictionary.json");
+const dict1 = require("./dictionary1.json");
 const dict2 = require("./dictionary2.json");
 
 const dict = {};
@@ -12,7 +12,7 @@ for (const w of Object.keys(dict2)) {
   } else {
     for (let i = 0; i < dict2[w].length; ++i) {
       const letter = String.fromCharCode("a".charCodeAt(0) + i);
-      meaning += `(${letter}) ${dict2[w][i]}. `;
+      meaning += `(${letter}) ${dict2[w][i].trim()} `;
     }
   }
   if (meaning.length > 3 && !meaning.match("^ISO.*entity$")) {
@@ -40,6 +40,6 @@ output = num + "\n" + output;
 wordout = num + "\n" + wordout;
 
 const fs = require("fs");
-fs.writeFileSync("input.txt", output);
+fs.writeFileSync("combined.txt", output);
 fs.writeFileSync("words.txt", wordout);
 fs.writeFileSync("reject.txt", rejected);
